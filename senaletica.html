@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEÑALÉTICA - VITTA STUDIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CURSOR PERSONALIZADO -->
+    <div id="cursor"></div>
+    <div id="cursor-effect"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo fade-effect">VITTA STUDIO</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio">INICIO</a></li>
+                <li><a href="index.html#branding">PORTFOLIO</a></li>
+                <li><a href="index.html#sobre-vitta">SOBRE VITTA</a></li>
+                <li><a href="index.html#about">SOBRE MI</a></li>
+                <li><a href="index.html#contacto">CONTACTOS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PROJECT INTRO -->
+    <section class="portfolio-section" style="background-image: url('https://via.placeholder.com/1920x1080'); background-size: cover; background-position: center;">
+        <div class="portfolio-overlay">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>SEÑALÉTICA</h2>
+
+                    <section>
+                        <div class="col">
+                            <p>
+                                El proyecto de señalética para el Yacht Club Paysandú surge ante la necesidad de unificar su comunicación visual y mejorar la orientación dentro de sus instalaciones. A partir de un análisis del espacio, las circulaciones y la identidad institucional, se creó un sistema integral moderno, accesible y sostenible que respeta la tradición del club y dialoga con su entorno natural.
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            <p>
+                               El resultado es un sistema de señalización claro, coherente y alineado con los valores náuticos del club, que facilita la experiencia de socios y turistas, refuerza la identidad visual y mejora la seguridad del espacio. Comunica, organiza y conecta.
+                            </p>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide"><img src="señaletica 111.png"></div>
+            <div class="slide"><img src="logo señaletica.png"></div>
+            <div class="slide"><img src="pictogramas.png"></div>
+            <div class="slide"><img src="señaletica 1.png"></div>
+            <div class="slide"><img src="señaletica 2.png"></div>
+            <div class="slide"><img src="señaletica 3.png"></div>
+        </div>
+
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+
+        <div class="slider-dots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+            <button class="dot" data-index="4"></button>
+            <button class="dot" data-index="5"></button>
+        </div>
+    </section>
+
+    <!-- SLIDER SCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+      document.querySelectorAll('.hero-slider').forEach(slider => {
+        const wrapper = slider.querySelector('.slider-wrapper');
+        const slides = slider.querySelectorAll('.slide');
+        const prevBtn = slider.querySelector('.slider-btn.prev');
+        const nextBtn = slider.querySelector('.slider-btn.next');
+        const dots = slider.querySelectorAll('.dot');
+
+        let current = 0;
+        let autoSlide;
+
+        function goToSlide(index) {
+          if (index < 0) index = slides.length - 1;
+          if (index >= slides.length) index = 0;
+
+          current = index;
+          wrapper.style.transform = `translateX(-${current * 100}vw)`;
+
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === current);
+          });
+        }
+
+        function startAutoSlide() {
+          autoSlide = setInterval(() => {
+            goToSlide(current + 1);
+          }, 5000);
+        }
+
+        function stopAutoSlide() {
+          clearInterval(autoSlide);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            goToSlide(parseInt(dot.dataset.index));
+          });
+        });
+
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        goToSlide(0);
+        startAutoSlide();
+      });
+
+    });
+    </script>
+
+    <!-- CONTACT SECTION -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2>¡TRABAJEMOS JUNTOS!</h2>
+            <p>¿Necesitás un sistema de señalética? Diseñemos juntos la orientación visual de tu espacio.</p>
+            
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VITTA STUDIO</h4>
+                <p>"HABITAR LA FORMA"</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>LINKS</h4>
+                <ul>
+                    <li><a href="#terminos">TÉRMINOS</a></li>
+                    <li><a href="#ayuda">AYUDA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>REDES</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/vittastudio.uy/">INSTAGRAM</a></li>
+                    <li><a href="#">LINKEDIN</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 VITTA STUDIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT GENERAL -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
