@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLYERS - VITTA STUDIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CURSOR PERSONALIZADO -->
+    <div id="cursor"></div>
+    <div id="cursor-effect"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo fade-effect">VITTA STUDIO</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio">INICIO</a></li>
+                <li><a href="index.html#branding">PORTFOLIO</a></li>
+                <li><a href="index.html#sobre-vitta">SOBRE VITTA</a></li>
+                <li><a href="index.html#about">SOBRE MI</a></li>
+                <li><a href="index.html#contacto">CONTACTOS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PROJECT 1 -->
+    <section class="portfolio-section" style="background-image: url('https://via.placeholder.com/1920x1080'); background-size: cover; background-position: center;">
+        <div class="portfolio-overlay">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>Sobre CLE</h2>
+
+                    <section>
+                        <div class="col">
+                            <p>
+                                Los Centros de Lenguas Extranjeras (CLE) promueven el aprendizaje de idiomas y la diversidad cultural en todo Uruguay. Esta campaña de afiches, inspirada en el estilo de Milton Glaser, fue creada para comunicar que aprender lenguas es mucho más que estudiar: es conectar, descubrir y formar parte de una comunidad más amplia. La consigna del proyecto incluía analizar el diseño desde la perspectiva de Roland Barthes, integrando lectura denotativa, connotativa y simbólica.
+                            </p>
+                        </div>
+
+                        <div class="col">
+                            <p>
+                                Desde esa mirada, las ilustraciones no solo muestran monumentos y paisajes, sino que sugieren viaje, apertura y encuentro cultural. Los colores cálidos, las curvas del paisaje y los íconos internacionales construyen la idea del idioma como puente humano. El resultado es una narrativa visual accesible, optimista y cercana, que traduce la misión de los CLE en una invitación a abrir el propio mundo a nuevas lenguas, experiencias y formas de comunicación.
+                            </p>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDER -->
+    <section class="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <img src="flyer I.png" alt="Proyecto 1">
+            </div>
+            <div class="slide">
+                <img src="flyer II.png" alt="Proyecto 2">
+            </div>
+            <div class="slide">
+                <img src="flyer III.png" alt="Proyecto 3">
+            </div>
+        </div>
+
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+
+        <div class="slider-dots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const wrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const dots = document.querySelectorAll('.dot');
+
+        let current = 0;
+        let autoSlide;
+
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+
+            current = index;
+            wrapper.style.transform = `translateX(-${current * 100}vw)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === current);
+            });
+        }
+
+        function startAutoSlide() {
+            autoSlide = setInterval(() => {
+                goToSlide(current + 1);
+            }, 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.index));
+            });
+        });
+
+        const slider = document.querySelector('.hero-slider');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        goToSlide(0);
+        startAutoSlide();
+    });
+    </script>
+
+    <!-- CONTACT -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2>¡TRABAJEMOS JUNTOS!</h2>
+            <p>¿Necesitas flyers profesionales? Contáctanos y hagamos realidad tu idea.</p>
+
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VITTA STUDIO</h4>
+                <p>"HABITAR LA FORMA"</p>
+            </div>
+            <div class="footer-section">
+                <h4>LINKS</h4>
+                <ul>
+                    <li><a href="#terminos">TÉRMINOS</a></li>
+                    <li><a href="#ayuda">AYUDA</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>REDES</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/vittastudio.uy/">INSTAGRAM</a></li>
+                    <li><a href="#">LINKEDIN</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VITTA STUDIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT GENERAL -->
+    <script src="script (1).js" defer></script>
+
+</body>
+</html>
