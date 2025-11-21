@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILUSTRACIÓN - VITTA STUDIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<div id="cursor"></div>
+<div id="cursor-effect"></div>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo fade-effect">VITTA STUDIO</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio">INICIO</a></li>
+<li><a href="index.html#branding">PORTFOLIO</a></li>
+<li><a href="index.html#sobre-vitta">SOBRE VITTA</a></li>
+<li><a href="index.html#about">SOBRE MI</a></li>
+<li><a href="index.html#contacto">CONTACTOS</a></li>
+
+            </ul>
+        </div>
+    </nav>
+   
+    <!-- PROJECT 1 -->
+    <section class="portfolio-section" style="background-image: url(base\ web\ -\ FONDO.png); background-size: cover; background-position: center;">
+        <div class="portfolio-overlay">
+            <div class="section-content">
+                <div class="section-text">
+                    <h2>ILUSTRACIONES</h2>
+                    <section class="">
+    <div class="col">
+        <p>
+            Mis ilustraciones habitan un territorio donde lo narrativo y lo emocional se dan la mano. Trabajo desde el color como energía y desde la forma como gesto sensorial: cada pieza que creo busca construir una atmósfera, no solo una imagen. En mis proyectos conviven la simpleza del trazo, las texturas orgánicas y una paleta que respira calidez, contraste y sentido de identidad.        </p>
+    </div>
+
+    <div class="col">
+        <p>
+          Mi estilo se mueve entre lo narrativo, lo conceptual y lo sensible. Me interesa ilustrar emociones, atmósferas y universos que puedan leerse más allá de lo literal: historias que se insinúan, personajes que respiran y colores que cuentan. Cada obra es un ritual de juego, exploración y síntesis, donde lo simple se vuelve poderoso y lo expresivo encuentra su equilibrio natural.
+        </p>
+    </div>
+</section>
+</section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <section class="hero-slider">
+  <div class="slider-wrapper">
+    <div class="slide">
+      <img src="ILU 3.png" alt="Proyecto 1">
+    </div>
+    <div class="slide">
+      <img src="ILU 1.png" alt="Proyecto 2">
+    </div>
+    <div class="slide">
+      <img src="CAPERUCITA.png" alt="Proyecto 3">
+    </div>
+    <div class="slide">
+      <img src="FANTASMA.png" alt="Proyecto 4">
+    </div>
+    <div class="slide">
+      <img src="ILUSTRACION ME.png" alt="Proyecto 5">
+    </div>
+    <div class="slide">
+      <img src="ILU 4.png" alt="Proyecto 6">
+    </div>
+    </div>
+  </div>
+
+  <button class="slider-btn prev">&#10094;</button>
+  <button class="slider-btn next">&#10095;</button>
+
+  <div class="slider-dots">
+    <button class="dot active" data-index="0"></button>
+    <button class="dot" data-index="1"></button>
+    <button class="dot" data-index="2"></button>
+    <button class="dot" data-index="3"></button>
+    <button class="dot" data-index="4"></button>
+    <button class="dot" data-index="5"></button>
+    <button class="dot" data-index="6"></button>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const wrapper = document.querySelector('.slider-wrapper');
+  const slides = document.querySelectorAll('.slide');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  const dots = document.querySelectorAll('.dot');
+
+  let current = 0;
+  let autoSlide;
+
+  function goToSlide(index) {
+    if (index < 0) index = slides.length - 1;
+    if (index >= slides.length) index = 0;
+
+    current = index;
+    wrapper.style.transform = `translateX(-${current * 100}vw)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === current);
+    });
+  }
+
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      goToSlide(current + 1);
+    }, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  prevBtn.addEventListener('click', () => goToSlide(current - 1));
+  nextBtn.addEventListener('click', () => goToSlide(current + 1));
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      goToSlide(parseInt(dot.dataset.index));
+    });
+  });
+
+  const slider = document.querySelector('.hero-slider');
+  slider.addEventListener('mouseenter', stopAutoSlide);
+  slider.addEventListener('mouseleave', startAutoSlide);
+
+  goToSlide(0);
+  startAutoSlide();
+});
+</script>
+
+    <!-- CONTACT SECTION -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2>¡TRABAJEMOS JUNTOS!</h2>
+            <p>¿Necesitas diseño de ilustraciones? Contáctanos y crearemos el arte visual perfecto para tu proyecto.</p>
+            
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VITTA STUDIO</h4>
+                <p>"HABITAR LA FORMA"</p>
+            </div>
+            <div class="footer-section">
+                <h4>LINKS</h4>
+                <ul>
+                    <li><a href="#terminos">TÉRMINOS</a></li>
+                    <li><a href="#ayuda">AYUDA</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>REDES</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/vittastudio.uy/">INSTAGRAM</a></li>
+                    <li><a href="#">LINKEDIN</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 VITTA STUDIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+      <script src="C:\Users\victt\OneDrive\Escritorio\Vitta I\script (1).js"></script>
+<script src="C:\Users\victt\OneDrive\Escritorio\Vitta I\script (1).js"></script>
+</body>
+
+</html>
