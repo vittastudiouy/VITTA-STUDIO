@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEÑALÉTICA - VITTA STUDIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CURSOR PERSONALIZADO -->
+    <div id="cursor"></div>
+    <div id="cursor-effect"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo fade-effect">VITTA STUDIO</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio">INICIO</a></li>
+                <li><a href="index.html#branding">PORTFOLIO</a></li>
+                <li><a href="index.html#sobre-vitta">SOBRE VITTA</a></li>
+                <li><a href="index.html#about">SOBRE MI</a></li>
+                <li><a href="index.html#contacto">CONTACTOS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+      <!-- ===============================
+     MÓDULO GENÉRICO DE PROYECTO
+     =============================== -->
+
+<!-- BLOQUE 1 — IMAGEN HERO -->
+<section class="project-hero">
+    <img src="FONDO SEÑALETICA.png" alt="Nombre del proyecto">
+</section>
+
+<!-- BLOQUE 2 — INTRO DEL PROYECTO -->
+<section class="project-intro">
+    <h2>YACHT CLUB PAYSANDÚ — Señalética</h2>
+    <p>El Yacht Club Paysandú es un espacio histórico donde tradición, comunidad y vida náutica conviven. La señalética debía dialogar con esa identidad, mejorar la experiencia de quienes circulan por el predio y actualizar un sistema que había perdido unidad visual con el paso del tiempo.</p>
+</section>
+
+<section class="project-process">
+    <h2>DE LA IDEA AL DISEÑO</h2>
+
+    <!-- CONTENEDOR DE LÍNEA + MARCAS -->
+    <div class="process-timeline">
+        <span class="timeline-marker marker-1"></span>
+        <span class="timeline-marker marker-2"></span>
+        <span class="timeline-marker marker-3"></span>
+    </div>
+
+    <!-- TRES COLUMNAS DE TEXTO -->
+    <div class="process-columns">
+        <div class="process-col">
+            <p>
+                La situación evidenciaba un entorno fragmentado: señales desiguales, materiales dispares y una orientación poco clara. Esto generaba confusión y debilitaba la presencia institucional del club. Era necesario renovar el lenguaje visual sin perder su esencia náutica y su calidez comunitaria.
+            </p>
+        </div>
+
+        <div class="process-col">
+            <p>
+                La tarea se centró en diagnosticar el espacio, observar recorridos y conversar con quienes habitan el club. La acción consistió en traducir esos hallazgos en un sistema basado en sobriedad, tradición, naturaleza y modernidad. Tipografías limpias, pictogramas universales, formas simples y materiales nobles construyeron un lenguaje guiado por los arquetipos del explorador, el cuidador y el hombre corriente.
+            </p>
+        </div>
+
+        <div class="process-col">
+            <p>
+                El resultado es un sistema claro y contemporáneo que facilita la orientación y mejora la experiencia del visitante. Una señalética que se integra al paisaje sin imponerse y fortalece la identidad institucional. Una presencia visual que convierte el recorrido en una experiencia más intuitiva, coherente y alineada con el espíritu náutico del club.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- AQUÍ VA TU CAROUSEL SIN TOCAR -->
+
+    <!-- SLIDER -->
+    <section class="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide"><img src="logo señaletica.png" alt="Proyecto 1"></div>
+            <div class="slide"><img src="señaletica info.png" alt="Proyecto 2"></div>
+            <div class="slide"><img src="señaletica 2.png" alt="Proyecto 3"></div>
+            <div class="slide"><img src="señaletica 3.png" alt="Proyecto 4"></div>
+            <div class="slide"><img src="señaletica 1.png" alt="Proyecto 5"></div>
+        </div>
+
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+
+        <div class="slider-dots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+            <button class="dot" data-index="4"></button>
+        </div>
+    </section>
+
+    <!-- SLIDER SCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const wrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const dots = document.querySelectorAll('.dot');
+
+        let current = 0;
+        let autoSlide;
+
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            current = index;
+            wrapper.style.transform = `translateX(-${current * 100}vw)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        }
+
+        function startAutoSlide() {
+            autoSlide = setInterval(() => goToSlide(current + 1), 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        nextBtn.addEventListener('click', () => goToSlide(current + 1));
+        dots.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index))));
+
+        const slider = document.querySelector('.hero-slider');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        goToSlide(0);
+        startAutoSlide();
+    });
+    </script>
+
+    <!-- CONTACT SECTION -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2>¡TRABAJEMOS JUNTOS!</h2>
+            <p>¿Necesitás un sistema de señalética? Diseñemos juntos la orientación visual de tu espacio.</p>
+            
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VITTA STUDIO</h4>
+                <p>"HABITAR LA FORMA"</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>LINKS</h4>
+                <ul>
+                    <li><a href="#terminos">TÉRMINOS</a></li>
+                    <li><a href="#ayuda">AYUDA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>REDES</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/vittastudio.uy/">INSTAGRAM</a></li>
+                    <li><a href="#">LINKEDIN</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 VITTA STUDIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT GENERAL -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
