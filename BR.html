@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRANDING - VITTA STUDIO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CURSOR -->
+    <div id="cursor"></div>
+    <div id="cursor-effect"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo fade-effect">VITTA STUDIO</div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio">INICIO</a></li>
+                <li><a href="index.html#branding">PORTFOLIO</a></li>
+                <li><a href="index.html#sobre-vitta">SOBRE VITTA</a></li>
+                <li><a href="index.html#about">SOBRE MI</a></li>
+                <li><a href="index.html#contacto">CONTACTOS</a></li>
+            </ul>
+        </div>
+    </nav>
+
+   <!-- ===============================
+     MÓDULO GENÉRICO DE PROYECTO
+     =============================== -->
+
+<!-- BLOQUE 1 — IMAGEN HERO -->
+<section class="project-hero">
+    <img src="FONDO BRANDING.png" alt="Nombre del proyecto">
+</section>
+
+<!-- BLOQUE 2 — INTRO DEL PROYECTO -->
+<section class="project-intro">
+    <h2>Savia — Retiros de bienestar en la naturaleza </h2>
+    <p>
+        Savia es una marca que nace del deseo de volver a lo esencial. Es un retiro que propone silencio en un mundo acelerado, un espacio donde el cuerpo encuentra pausa, donde la naturaleza se convierte en refugio íntimo y donde la experiencia se sostiene en un ritmo humano, cálido y respirable. Su identidad busca habitar esa calma: una estética suave, consciente y serena.
+</section>
+
+<section class="project-process">
+    <h2>DE LA IDEA AL DISEÑO</h2>
+
+    <!-- CONTENEDOR DE LÍNEA + MARCAS -->
+    <div class="process-timeline">
+        <span class="timeline-marker marker-1"></span>
+        <span class="timeline-marker marker-2"></span>
+        <span class="timeline-marker marker-3"></span>
+    </div>
+
+    <!-- TRES COLUMNAS DE TEXTO -->
+    <div class="process-columns">
+        <div class="process-col">
+            <p>
+                El proyecto tomó forma en un contexto saturado de estímulos, donde la desconexión emocional y el agotamiento digital habían desdibujado la idea de bienestar. Surgió entonces la necesidad de crear una identidad que restituyera la calma desde un gesto visual honesto, capaz de invitar a detenerse y reencontrarse con un pulso más lento y vital.
+            </p>
+        </div>
+
+        <div class="process-col">
+            <p>
+                El desarrollo se centró en traducir esa búsqueda en decisiones que respiraran organicidad: tipografías abiertas, colores tierra, composiciones amplias y un tono íntimo que acompaña sin imponer. Los arquetipos del cuidador y del explorador guiaron el proceso, permitiendo diseñar un universo cercano, sensible y profundamente arraigado en la naturaleza como maestra silenciosa.
+            </p>
+        </div>
+
+        <div class="process-col">
+            <p>
+                El resultado es una marca que transmite equilibrio y propósito. Un sistema visual que abraza, ordena y acompaña la experiencia del retiro. Una identidad que recuerda que la calma existe y que, al volver a lo natural, cada persona también vuelve a sí misma.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<!-- AQUÍ VA TU CAROUSEL SIN TOCAR -->
+
+    <!-- SLIDER -->
+    <section class="hero-slider">
+        <div class="slider-wrapper">
+            <div class="slide"><img src="Savia 1.png" alt="Proyecto 1"></div>
+            <div class="slide"><img src="SAVIA 2.png" alt="Proyecto 2"></div>
+            <div class="slide"><img src="Mockup - Papeleria I - SAVIA.png" alt="Proyecto 3"></div>
+            <div class="slide"><img src="Mockup - Papeleria II - SAVIA.png" alt="Proyecto 4"></div>
+            <div class="slide"><img src="Mockup - Papeleria III - SAVIA.png" alt="Proyecto 5"></div>
+        </div>
+
+        <button class="slider-btn prev">&#10094;</button>
+        <button class="slider-btn next">&#10095;</button>
+
+        <div class="slider-dots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+            <button class="dot" data-index="4"></button>
+        </div>
+    </section>
+
+    <!-- SLIDER SCRIPT -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const wrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.slider-btn.prev');
+        const nextBtn = document.querySelector('.slider-btn.next');
+        const dots = document.querySelectorAll('.dot');
+
+        let current = 0;
+        let autoSlide;
+
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            current = index;
+            wrapper.style.transform = `translateX(-${current * 100}vw)`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        }
+
+        function startAutoSlide() {
+            autoSlide = setInterval(() => goToSlide(current + 1), 5000);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlide);
+        }
+
+        prevBtn.addEventListener('click', () => goToSlide(current - 1));
+        nextBtn.addEventListener('click', () => goToSlide(current + 1));
+        dots.forEach(dot => dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.index))));
+
+        const slider = document.querySelector('.hero-slider');
+        slider.addEventListener('mouseenter', stopAutoSlide);
+        slider.addEventListener('mouseleave', startAutoSlide);
+
+        goToSlide(0);
+        startAutoSlide();
+    });
+    </script>
+
+    <!-- CONTACT -->
+    <section id="contacto" class="contact-section">
+        <div class="contact-container">
+            <h2>¡TRABAJEMOS JUNTOS!</h2>
+            <p>¿Necesitás branding o identidad visual? Conectemos y demos forma a tu esencia.</p>
+
+            <form class="contact-form" onsubmit="enviarFormulario(event)">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Contame sobre tu proyecto" rows="5" required></textarea>
+                <button type="submit" class="btn-primary">ENVIAR</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>VITTA STUDIO</h4>
+                <p>"HABITAR LA FORMA"</p>
+            </div>
+
+            <div class="footer-section">
+                <h4>LINKS</h4>
+                <ul>
+                    <li><a href="#">TÉRMINOS</a></li>
+                    <li><a href="#">AYUDA</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>REDES</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/vittastudio.uy/">INSTAGRAM</a></li>
+                    <li><a href="#">LINKEDIN</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 VITTA STUDIO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JS GLOBAL -->
+    <script src="script.js" defer></script>
+
+</body>
+</html>
